@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <div class="container">
+
+        <div class="search">
+            <div class="input-container">
+                <input type="search" placeholder="enter city name" value="New York" spellcheck="false">
+                <button><img src="./search.png" alt=""></button>
+            </div> 
+        </div>
+
+        <div class="weather-container">
+
+            <div class="weather-img">
+                <img src="./clouds.png" alt="" class="weather-icon">
+                <h1 class="temp">22°C</h1>
+                <p class="city">New York</p>
+            </div>
+    
+            <div class="container2">
+    
+                <div class="col">
+                    <img src="./humidity.png" alt="">
+                    <div class="humidity">
+                        <p class="Humid">50%</p>
+                        <p>Humidity</p>
+                    </div>
+                    
+                </div>
+                <div class="col">
+                    <img src="./wind.png" alt="">
+                    <div class="wind-speed">
+                        <p class="speed">15 km/h</p>
+                        <p>Wind Speed</p>
+                    </div>
+                    
+    
+                </div>
+    
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!--Script-->
+    <script>
+        const apikey = "9eb36b93f4b2479bcc8f7ab48f866995";
+        const apiurl = "https://api.openweathermap.org/data/2.5/weather?&units=metric&q=";
+
+        const InputBox = document.querySelector(".search .input-container input");
+        const Searchbtn = document.querySelector(".search .input-container button");
+        let container = document.querySelector(".weather-container");
+        const weatherIcon = document.querySelector(".weather-icon");
+        
+        console.log(container.classList.add('hide'));
+   
+        // console.log(container.setAttribute('class','show'));
+
+        async function checkWeather(city){
+            const response = await fetch(apiurl + city + `&appid=${apikey}`);
+            let data = await response.json();
+            
+
+            console.log(data);
+            document.querySelector(".city").innerHTML = `${data.name}`;
+            document.querySelector(".temp").innerHTML = `${Math.round(data.main.temp)}` + "°C";
+            document.querySelector(".Humid").innerHTML = `${data.main.humidity}`  + "%";
+            document.querySelector(".speed").innerHTML = `${data.wind.speed}` + "km/h";
+
+            let weather_main = data.weather[0].main
+            console.log('Mayank',weather_main);
+
+            if (weather_main == "Clouds"){
+                weatherIcon.src = "./clouds.png";
+                console.log(weatherIcon.src);
+            }
+            else if(weather_main == "Clear"){
+                // alert('hii')
+                // console.log(weatherIcon);
+                weatherIcon.src = "./clear.png";
+                console.log(weatherIcon.src);
+            }
+            else if(weather_main == "Drizzle"){
+                weatherIcon.src = "./drizzle.png";
+                console.log(weatherIcon.src);
+            }
+            else if(weather_main == "Mist"){
+                weatherIcon.src = "./mist.png";
+                console.log(weatherIcon.src);
+            }
+            else if(weather_main == "Rain"){
+                weatherIcon.src = "./rain.png";
+                console.log(weatherIcon.src);
+            }
+            else if(weather_main == "Snow"){
+                weatherIcon.src = "./snow.png";
+                console.log(weatherIcon.src);
+            }
+
+            console.log(container.classList.replace('hide', 'show'));
+
+        }
+
+        Searchbtn.addEventListener("click", ()=>{
+
+            checkWeather(InputBox.value);
+
+        })
+
+
+    </script>
+    
+</body>
+
+</html>

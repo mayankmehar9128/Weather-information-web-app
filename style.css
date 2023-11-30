@@ -1,0 +1,163 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #222;
+}
+
+.container{
+    width: 100%;
+    max-width: 450px;
+    background: linear-gradient(347deg, rgba(255,255,255,1) -22%, rgba(122,133,238,1) 13%, rgba(124,44,123,1) 59%, rgba(71,89,6,1) 94%);
+    margin: auto;
+    margin-top: 100px;
+    padding: 20px;
+    border-radius: 20px;
+    transition: top 1s linear;
+}
+
+.search{
+    width: 100%;
+    /* display: flex;
+    align-items: center;
+    justify-contdent: center; */
+    margin: 5px auto 5px;
+}
+
+.input-container{
+    display: flex;
+    justify-content: space-between;
+    padding: 7px;
+    align-items: center;
+}
+
+.input-container input{
+    padding: 12px 25px;
+    border: none;
+    border-radius: 40px;
+    height: 64px;
+    width: 310px;
+    transition: 0.6s ease-in-out;
+}
+
+.input-container button{
+    border: none;
+    border-radius: 50%;
+    height: 60px;
+    width: 60px;
+}
+
+.input-container button img{
+    width: 16px;
+}
+
+.weather-img{
+    text-align: center;
+}
+
+.weather-img h1{
+     font-size: 70px;
+     color: white;
+}
+
+.weather-img p{
+    font-size: 25px;
+    color: white;
+}
+
+.container2{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
+}
+
+.col{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+}
+
+.col img{
+    width: 60px;
+}
+
+.wind{
+    padding-bottom: 14px;
+    color: aliceblue;
+    font-weight: 100px;
+}
+
+.humidity, .wind-speed{
+    padding-left: 16px;
+    color: white;
+}
+
+/* .weather-container{
+    display: none;
+  /* Other styling properties
+    transition: opacity 0.5s ease;
+} */
+
+.show{
+    display: block;
+    /* opacity: 1; */
+}
+
+.hide{
+    display: none;
+    /* opacity: 0; */
+}
+
+@media  screen and (max-width: 540px) {
+    .container {
+        height: 450px;
+        width: 311px;
+        padding: 10px;
+    } 
+    .search {
+        height: 50px;
+    }
+
+    .input-container input{
+        height: 48px;
+        width: 226px;
+    }
+
+    .input-container button{
+        width: 40px;
+        height: 40px;
+    }
+
+    .weather-icon{
+        width: 155px;
+    }
+
+    .weather-img h1{
+        font-size: 60px;
+    }
+
+    .city{
+        font-size: 10px;
+    }
+
+    .col img{
+        width: 40px;
+    }
+
+    .humidty p{
+        font-size: 20px;
+    }
+
+    .wind-speed p{
+        font-size: 17px;
+    }
+
+    .container2{
+        margin-top: 45px;
+    }
+
+}
